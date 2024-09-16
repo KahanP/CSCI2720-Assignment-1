@@ -5,4 +5,14 @@ public class NodeType {
     public ItemType info;
     public NodeType next;
 
+    public boolean hasNext() {
+        if (next == null) {
+            return false;
+        } // if
+        return true;
+    } // hasNext
+
+    public NodeType getNext(){
+        return next;
+    } // getNext
 } // NodeType

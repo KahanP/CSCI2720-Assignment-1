@@ -1,4 +1,4 @@
-package cs2720.assignment;
+package cs2720.assignment1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class LinkedListDriver {
 
+    private static  boolean quit;
+
     public static void main(String[] args) {
 
 
         if (args.length != 1) {
-            System.out.println("add input text file");
+            System.out.println("add input text file, exiting...");
             return;
         } // if
 
@@ -31,9 +33,9 @@ public class LinkedListDriver {
             "(q) - Quit program\n\n");
         // shows the example inputs
 
-        boolean quit = false;
+        quit = false;
         // TODO: fix the condition to start loop "quit"
-        while (quit) {
+        while (!quit) {
             System.out.println("Enter a command: ");
             String command = scanner.nextLine();
             process(command);
@@ -69,7 +71,8 @@ public class LinkedListDriver {
             break;
         case "q": // quit
             System.out.println("Exiting the program");
-            System.exit(0); //  fix quit
+            quit = true;
+            System.exit(0);
             break;
         default:
             System.out.println("Invalid command try again");
