@@ -6,7 +6,7 @@ public class SortedLinkedList {
 
     public SortedLinkedList() {
         head = null;
-        head = new NodeType();
+
     } //  SortedLinkedList
 
     public int getLength() {
@@ -23,15 +23,49 @@ public class SortedLinkedList {
     // TODO: make sure that linked list initalizes correctly
     public void insertItem(ItemType item){
 
-        if (getLength() == 0) {
+        if (item == null) {
+            System.out.println("Item is null, cannot insert.");
+            return;
+        }
 
+        // creation of new node
+        NodeType newNode = new NodeType();
+        newNode.setInfo(item);
+        newNode.next = null;
 
+        // check if list is empty or inserting the first element
+        if (this.head == null ) {
+            this.head = newNode;
+            this.head.setInfo(item);
+            return;
         } // if
 
-        for(int i=0; i < getLength(); i++) {
+        if (this.head.info == null) {
+            System.out.println("Head node's info is null.");
+            return;
+        }
 
-        } //
+        // if Item is smaller than head
+        if (item.compareTo(this.head.info) < 0) {
+            newNode.next = this.head;
+            this.head = newNode;
+            return;
+        } // if
 
+        NodeType location = this.head;
+        NodeType prevLocation = null;
+
+        while (location != null && item.compareTo(location.info) >= 0) {
+            // check for duplicate item
+            if (item.compareTo(location.info) == 0) {
+                System.out.println("Sorry, You cannot insert the duplicate item");
+                return;
+            } // if
+            prevLocation = location;
+            location = location.next;
+        } // searches for correct location
+        prevLocation.next = newNode;
+        newNode.next = location;
 
     } // insertItem
 
@@ -43,5 +77,18 @@ public class SortedLinkedList {
         return 1; //  1 is placeholder
     } // searchItem
 
+    public void printList() {
+        if (this.head == null) {
+            System.out.println("The list is empy.");
+        } //if
+
+        NodeType current = this.head;
+        System.out.print("The list is: ");
+        while (current != null) {
+            System.out.print(current.info.getValue() + " ");
+            current = current.next;
+        }
+        System.out.println("");
+    } // printList
 
 } // SortedLinkedList

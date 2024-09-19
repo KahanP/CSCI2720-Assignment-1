@@ -15,4 +15,8 @@ public class NodeType {
     public NodeType getNext(){
         return next;
     } // getNext
+
+    public void setInfo(ItemType info) {
+        this.info = info;
+    } // setInfo
 } // NodeType
