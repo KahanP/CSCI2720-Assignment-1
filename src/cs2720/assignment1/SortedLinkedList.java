@@ -104,7 +104,19 @@ public class SortedLinkedList {
     } // deleteItem
 
     public int searchItem(ItemType item) {
-        return 1; //  1 is placeholder
+        NodeType current = this.head;
+        int index = 0;
+
+        while (current != null) {
+            if (current.info.compareTo(item) == 0) {
+                System.out.println("The item is present at index " + index);
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        System.out.println("Item is not present in the list.");
+        return -1; //  1 is placeholder
     } // searchItem
 
     public void printList() {
