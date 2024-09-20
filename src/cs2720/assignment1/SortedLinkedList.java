@@ -12,7 +12,7 @@ public class SortedLinkedList {
     public int getLength() {
         int length = 0;
         NodeType temp = head;
-        while (temp.hasNext()){
+        while (temp != null){
             length++;
             temp = temp.getNext();
         } // while
@@ -70,6 +70,8 @@ public class SortedLinkedList {
     } // insertItem
 
     public void deleteItem(ItemType item){
+
+
 
     } // deleteItem
 
