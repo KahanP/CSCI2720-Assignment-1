@@ -70,7 +70,14 @@ public class LinkedListDriver {
 
                 break;
             case "s": // search
-
+                System.out.print("Enter a number to search: ");
+                int numToSearch = inputScanner.nextInt();
+                inputScanner.nextLine();
+                System.out.print("Orignal list : ");
+                list.printList();
+                ItemType itemToSearch = new ItemType();
+                itemToSearch.initialize(numToSearch);
+                list.searchItem(itemToSearch);
                 break;
             case "a": // del alt
 
