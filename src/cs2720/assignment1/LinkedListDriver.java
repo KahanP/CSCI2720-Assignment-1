@@ -56,17 +56,36 @@ public class LinkedListDriver {
 
         quit = false;
         // TODO: fix the condition to start loop "quit"
-        Scanner inputScanner = new Scanner(System.in);
+
         while (!quit) {
+            Scanner inputScanner = new Scanner(System.in);
             System.out.print("Enter a command: ");
             String command = inputScanner.nextLine();
-            process(command);
 
             switch (command) {
             case "i": // insert
+                System.out.print("Enter a number to insert: ");
+                int insertInt = inputScanner.nextInt();
+                System.out.print("Original List: ");
+                list.printList();
+                ItemType insertItem = new ItemType();
+                insertItem.initialize(insertInt);
+                list.insertItem(insertItem);
+                System.out.print("New List: ");
+                list.printList();
+
 
                 break;
             case "d": // delete
+                System.out.print("Enter a number to delete: ");
+                int deleteInt = inputScanner.nextInt();
+                System.out.print("Original List: ");
+                list.printList();
+                ItemType deleteItem = new ItemType();
+                deleteItem.initialize(deleteInt);
+                list.deleteItem(deleteItem);
+                System.out.print("New List: ");
+                list.printList();
 
                 break;
             case "s": // search
@@ -75,10 +94,14 @@ public class LinkedListDriver {
             case "a": // del alt
 
                 break;
+            case "t": // intersection
+
+                break;
             case "m": // merge
 
                 break;
             case "p": // print all
+                System.out.print("The list is: ");
                 list.printList();
 
                 break;
@@ -105,10 +128,5 @@ public class LinkedListDriver {
 
     } // main
 
-    // processes the command
-    private static void process(String command) {
-
-
-    } // process
 
 } // Driver

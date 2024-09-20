@@ -58,7 +58,7 @@ public class SortedLinkedList {
         while (location != null && item.compareTo(location.info) >= 0) {
             // check for duplicate item
             if (item.compareTo(location.info) == 0) {
-                System.out.println("Sorry, You cannot insert the duplicate item");
+                System.out.println("Item already exists");
                 return;
             } // if
             prevLocation = location;
@@ -71,8 +71,36 @@ public class SortedLinkedList {
 
     public void deleteItem(ItemType item){
 
+        NodeType previousList = this.head;
+        if (this.head == null) {
+            System.out.println("You cannot delete from an empty list");
+            return;
+        } // null check
 
+        NodeType location = this.head;
+        NodeType previous = null;
 
+        if (item.compareTo(location.info) == 0) {
+            if (location.next == null) {
+                this.head = null;
+            } else {
+                this.head = location.next;
+            } // if
+            return;
+        } // check if head is item to be deleted
+
+        // traverse the list
+        while (location != null && item.compareTo(location.info) != 0) {
+            previous = location;
+            location = location.next;
+        } // while
+
+        if (location == null) {
+            System.out.println("The item is not present in the list");
+            return;
+        } // if
+
+        previous.next = location.next;
     } // deleteItem
 
     public int searchItem(ItemType item) {
@@ -81,11 +109,10 @@ public class SortedLinkedList {
 
     public void printList() {
         if (this.head == null) {
-            System.out.println("The list is empy.");
+            System.out.print(" ");
         } //if
 
         NodeType current = this.head;
-        System.out.print("The list is: ");
         while (current != null) {
             System.out.print(current.info.getValue() + " ");
             current = current.next;
