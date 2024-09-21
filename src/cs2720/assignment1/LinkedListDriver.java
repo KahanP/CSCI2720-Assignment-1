@@ -65,15 +65,14 @@ public class LinkedListDriver {
             switch (command) {
             case "i": // insert
                 System.out.print("Enter a number to insert: ");
-                int insertInt = inputScanner.nextInt();
+                int intToInsert = inputScanner.nextInt();
                 System.out.print("Original List: ");
                 list.printList();
-                ItemType insertItem = new ItemType();
-                insertItem.initialize(insertInt);
-                list.insertItem(insertItem);
+                ItemType itemToInsert = new ItemType();
+                itemToInsert.initialize(intToInsert);
+                list.insertItem(itemToInsert);
                 System.out.print("New List: ");
                 list.printList();
-
 
                 break;
             case "d": // delete
@@ -97,11 +96,40 @@ public class LinkedListDriver {
                 ItemType itemToSearch = new ItemType();
                 itemToSearch.initialize(numToSearch);
                 list.searchItem(itemToSearch);
-                break;
-            case "a": // del alt
 
                 break;
+            case "a": // del alt
+                System.out.print("Orignal list : ");
+                list.printList();
+                list.deleteAltNodes();
+                System.out.print("New List: ");
+                list.printList();
+                break;
             case "t": // intersection
+                System.out.print("Enter the length of the new list: ");
+                int lengthOfNewList = inputScanner.nextInt();
+                inputScanner.nextLine();
+
+                System.out.print("Enter the numbers ");
+                String newList = inputScanner.nextLine();
+                String [] numsInList2 = newList.split("\\s+");
+
+                // new list to intersect
+                SortedLinkedList list2 = new SortedLinkedList();
+                for (int i = 0; i < lengthOfNewList; i++) {
+                    int intForList2 = Integer.parseInt(numsInList2[i]);
+                    ItemType itemForList2 = new ItemType();
+                    itemForList2.initialize(intForList2);
+                    list2.insertItem(itemForList2);
+                } // whil
+
+                System.out.print("List 1: ");
+                list.printList();
+                System.out.print("List 2: ");
+                list2.printList();
+                System.out.print("Intersection of lists: ");
+                list.intersection(list2);
+
 
                 break;
             case "m": // merge
