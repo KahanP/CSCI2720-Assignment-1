@@ -3,6 +3,7 @@ package cs2720.assignment1;
 public class SortedLinkedList {
 
     private NodeType head;
+    private boolean shouldPrintMessages = true;
 
     public SortedLinkedList() {
         head = null;
@@ -24,7 +25,9 @@ public class SortedLinkedList {
     public void insertItem(ItemType item){
 
         if (item == null) {
-            System.out.println("Item is null, cannot insert.");
+            if(shouldPrintMessages) {
+                System.out.println("Item is null, cannot insert.");
+            }
             return;
         }
 
@@ -58,7 +61,9 @@ public class SortedLinkedList {
         while (location != null && item.compareTo(location.info) >= 0) {
             // check for duplicate item
             if (item.compareTo(location.info) == 0) {
-                System.out.println("Item already exists");
+                if(shouldPrintMessages) {
+                    System.out.println("Item already exists");
+                }
                 return;
             } // if
             prevLocation = location;
@@ -68,6 +73,11 @@ public class SortedLinkedList {
         newNode.next = location;
 
     } // insertItem
+
+    // To prevent from printing certain messages
+    public void setShouldPrintMessages(boolean shouldPrint) {
+        this.shouldPrintMessages = shouldPrint;
+    } // setShouldPrintMessages
 
     public void deleteItem(ItemType item){
 

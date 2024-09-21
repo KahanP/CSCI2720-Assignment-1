@@ -143,6 +143,7 @@ public class LinkedListDriver {
 
                 // new list to merge
                 SortedLinkedList newMergeList = new SortedLinkedList();
+                newMergeList.setShouldPrintMessages(false);
 
                 for(int i = 0; i < lenOfList; i++) {
                         int num = Integer.parseInt(numsInList[i]);
@@ -151,6 +152,8 @@ public class LinkedListDriver {
                         newMergeList.insertItem(newItem);
                 }
 
+                list.setShouldPrintMessages(false);
+
                 System.out.print("List 1: ");
                 list.printList();
                 System.out.print("List 2: ");
@@ -158,6 +161,8 @@ public class LinkedListDriver {
                 list.mergeList(newMergeList);
                 System.out.print("Merged list: ");
                 list.printList();
+
+                list.setShouldPrintMessages(true);
                 break;
             case "p": // print all
                 System.out.print("The list is: ");
