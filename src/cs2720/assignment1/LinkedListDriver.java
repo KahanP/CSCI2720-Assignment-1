@@ -105,7 +105,31 @@ public class LinkedListDriver {
 
                 break;
             case "m": // merge
+                System.out.print("Enter the length of the new list: ");
+                int lenOfList = inputScanner.nextInt();
+                inputScanner.nextLine();
 
+                System.out.print("Enter the numbers ");
+                String inputList = inputScanner.nextLine();
+                String [] numsInList = inputList.split("\\s+");
+
+                // new list to merge
+                SortedLinkedList newList = new SortedLinkedList();
+
+                for(int i = 0; i < lenOfList; i++) {
+                        int num = Integer.parseInt(numsInList[i]);
+                        ItemType newItem = new ItemType();
+                        newItem.initialize(num);
+                        newList.insertItem(newItem);
+                }
+
+                System.out.print("List 1: ");
+                list.printList();
+                System.out.print("List 2: ");
+                newList.printList();
+                list.mergeList(newList);
+                System.out.print("Merged list: ");
+                list.printList();
                 break;
             case "p": // print all
                 System.out.print("The list is: ");

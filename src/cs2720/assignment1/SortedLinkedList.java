@@ -116,20 +116,28 @@ public class SortedLinkedList {
             index++;
         }
         System.out.println("Item is not present in the list.");
-        return -1; //  1 is placeholder
+        return -1;
     } // searchItem
 
     public void printList() {
         if (this.head == null) {
             System.out.print(" ");
-        } //if
+        } // if
 
         NodeType current = this.head;
         while (current != null) {
             System.out.print(current.info.getValue() + " ");
             current = current.next;
-        }
+        } // while
         System.out.println("");
     } // printList
+
+    public void mergeList(SortedLinkedList listToAdd) {
+        NodeType current = listToAdd.head;
+        while(current != null) {
+            insertItem(current.info);
+            current = current.next;
+        } // while
+    } // mergeList
 
 } // SortedLinkedList
