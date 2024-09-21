@@ -145,6 +145,7 @@ public class LinkedListDriver {
                 SortedLinkedList newMergeList = new SortedLinkedList();
                 newMergeList.setShouldPrintMessages(false);
 
+                // initializes and adds all the elements of the array to the list
                 for(int i = 0; i < lenOfList; i++) {
                         int num = Integer.parseInt(numsInList[i]);
                         ItemType newItem = new ItemType();
@@ -152,7 +153,7 @@ public class LinkedListDriver {
                         newMergeList.insertItem(newItem);
                 }
 
-                list.setShouldPrintMessages(false);
+                list.setShouldPrintMessages(false); // making sure to not print error messages
 
                 System.out.print("List 1: ");
                 list.printList();
@@ -179,7 +180,7 @@ public class LinkedListDriver {
                 System.exit(0);
                 break;
             default:
-                System.out.println("Invalid command try again");
+                System.out.println("Invalid command try again: ");
                 break;
             } // switch
 

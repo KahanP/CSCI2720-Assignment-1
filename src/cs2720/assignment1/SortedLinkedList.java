@@ -3,7 +3,7 @@ package cs2720.assignment1;
 public class SortedLinkedList {
 
     private NodeType head;
-    private boolean shouldPrintMessages = true;
+    private boolean shouldPrintMessages = true; // control flag
 
     public SortedLinkedList() {
         head = null;
@@ -113,15 +113,19 @@ public class SortedLinkedList {
         previous.next = location.next;
     } // deleteItem
 
+    // Return the index of the item if found, otherwise returns -1
     public int searchItem(ItemType item) {
         NodeType current = this.head;
         int index = 0;
 
+        // Transverse the list until the end
         while (current != null) {
+            // matches the current node's info with the item
             if (current.info.compareTo(item) == 0) {
                 System.out.println("The item is present at index " + index);
                 return index;
             }
+            // move to the next node
             current = current.next;
             index++;
         }
@@ -175,16 +179,18 @@ public class SortedLinkedList {
 
         SortedLinkedList intersectionList = new SortedLinkedList();
 
+        // transverse both lists until one of them reaches the end
         while (head1 != null && head2 != null) {
             int comparison = head1.info.compareTo(head2.info);
 
+            // if nodes are equal, adds the value to the intersection list
             if (comparison == 0) {
                 intersectionList.insertItem(head1.info);
                 head1 = head1.next;
                 head2 = head2.next;
-            } else if (comparison < 0) {
+            } else if (comparison < 0) { // if head1's value is smaller, moves head1 to next node
                 head1 = head1.next;
-            } else {
+            } else { // if head2's value is smaller, moves head2 to next node
                 head2 = head2.next;
             } // if
         } // while
