@@ -142,20 +142,20 @@ public class LinkedListDriver {
                 String [] numsInList = inputList.split("\\s+");
 
                 // new list to merge
-                SortedLinkedList newList = new SortedLinkedList();
+                SortedLinkedList newMergeList = new SortedLinkedList();
 
                 for(int i = 0; i < lenOfList; i++) {
                         int num = Integer.parseInt(numsInList[i]);
                         ItemType newItem = new ItemType();
                         newItem.initialize(num);
-                        newList.insertItem(newItem);
+                        newMergeList.insertItem(newItem);
                 }
 
                 System.out.print("List 1: ");
                 list.printList();
                 System.out.print("List 2: ");
-                newList.printList();
-                list.mergeList(newList);
+                newMergeList.printList();
+                list.mergeList(newMergeList);
                 System.out.print("Merged list: ");
                 list.printList();
                 break;
