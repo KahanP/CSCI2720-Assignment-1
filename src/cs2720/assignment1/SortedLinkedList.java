@@ -132,4 +132,47 @@ public class SortedLinkedList {
         System.out.println("");
     } // printList
 
+    public void deleteAltNodes() {
+
+        NodeType current = this.head;
+
+        if (current == null) {
+            System.out.println("The list is empty");
+            return;
+        } // if
+
+        //traverse list
+        while (current != null && current.next != null) {
+            NodeType nodeToDelete = current.next;
+            // make current node skip the next node
+            current.next = nodeToDelete.next;
+            // move current to the next nod that was not deleted
+            current = current.next;
+        } // while
+    } // deleteAltNodes
+
+   public void  intersection(SortedLinkedList list2) {
+        NodeType head1 = this.head;
+        NodeType head2 = list2.head;
+
+        SortedLinkedList intersectionList = new SortedLinkedList();
+
+        while (head1 != null && head2 != null) {
+            int comparison = head1.info.compareTo(head2.info);
+
+            if (comparison == 0) {
+                intersectionList.insertItem(head1.info);
+                head1 = head1.next;
+                head2 = head2.next;
+            } else if (comparison < 0) {
+                head1 = head1.next;
+            } else {
+                head2 = head2.next;
+            } // if
+        } // while
+
+        intersectionList.printList();
+    } // intersection
+
+
 } // SortedLinkedList
